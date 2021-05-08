@@ -8,10 +8,9 @@ class ServoController(Thread):
 	def __init__(self, pin=14, frequency=1, minimum=-0.2, maximum=1, resting=1):
 		Thread.__init__(self)
 		self.servo = Servo(pin)
-		self.servo.value = resting
-		self.servo_reset_delay = 0.5
-		time.sleep(self.servo_reset_delay)
 		self.servo.value = None
+		self.servo_reset_delay = 0.5
+		
 		self.frequency = frequency
 		self.minimum = minimum
 		self.maximum = maximum
@@ -24,6 +23,19 @@ class ServoController(Thread):
 		self.stopped = True
 		self.start_time = None
 		self.killed = False
+	
+	def dance(self):
+		with self.lock:
+			for i in range(2):
+				self.servo.value = -1
+				time.sleep(0.5)
+				self.servo.value = 1
+				time.sleep(0.5)
+			
+			self.servo.value = self.resting
+			time.sleep(self.servo_reset_delay)
+			self.servo.value = None
+			
 	
 	def kill(self):
 		self.killed = True
