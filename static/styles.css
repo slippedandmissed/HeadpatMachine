@@ -1,0 +1,30 @@
+*,
+*::before,
+*::after {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	font-size: inherit;
+}
+
+body,
+h1,
+h2,
+h3,
+p {
+	margin: 0;
+}
+
+*:focus {
+	outline: none;
+}
+
+body {
+	font-family: "Ariel", sans-serif;
+	position: absolute;
+	width: 100%;
+}
+
+button:not(:disabled) {
+	cursor: pointer;
+}

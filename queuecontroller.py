@@ -34,19 +34,19 @@ class QueueController(Thread):
 					self.controller.stop_moving()
 		
 		
+if __name__ == "__main__":
+	queue = QueueController()	
 
-queue = QueueController()	
+	queue.start()
 
-queue.start()
-
-try:
-	while True:
-		i = input(">> ")
-		if i == "0":
-			queue.enqueue()
-		elif i == "1":
-			queue.override = not queue.override
-		elif i == "q":
-			break
-finally:
-	queue.kill()
+	try:
+		while True:
+			i = input(">> ")
+			if i == "0":
+				queue.enqueue()
+			elif i == "1":
+				queue.override = not queue.override
+			elif i == "q":
+				break
+	finally:
+		queue.kill()

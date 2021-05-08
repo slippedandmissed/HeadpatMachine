@@ -50,3 +50,19 @@ class ServoController(Thread):
 					a = (math.sin(t*self.multiplier+self.phase)+1)/2
 					self.servo.value = a*(self.maximum-self.minimum)+self.minimum
 
+if __name__ == "__main__":
+	controller = ServoController()	
+
+	controller.start()
+
+	try:
+		while True:
+			i = input(">> ")
+			if i == "0":
+				controller.stop_moving()
+			elif i == "1":
+				controller.start_moving()
+			elif i == "q":
+				break
+	finally:
+		controller.kill()
