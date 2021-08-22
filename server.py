@@ -8,7 +8,7 @@ queue.start()
 
 @app.route("/")
 def index():
-	return render_template("index.html")
+	return render_template("index.html", animation_duration=queue.duration)
 
 @app.route("/pat")
 def pat():

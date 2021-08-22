@@ -5,9 +5,16 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 		<link rel="icon" href="/static/icon.png">
 		<link rel="stylesheet" href="/static/styles.css">
+		<script>
+			const animationDuration = (+"{{animationDuration}}")*1000;
+		</script>
 		<script src="/static/script.js"></script>
 	</head>
 	<body>
-		<button onclick="pat()">Headpat!</button>
+		<div id="button-container">
+			<button id="headpat-button" onclick="pat()">Headpat</button>
+			<img id="hand" src="/static/imgs/hand.png" alt="" class="hidden">
+			<p id="status" class="hidden">Patting...</p>
+		</div>
 	</body>
 </html>

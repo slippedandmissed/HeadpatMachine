@@ -1,3 +1,10 @@
+:root {
+	--color1: #FFDEDE;
+	--color2: #FDF5CA;
+	--color3: #FFDFAF;
+	--color4: purple;
+}
+
 *,
 *::before,
 *::after {
@@ -23,8 +30,75 @@ body {
 	font-family: "Ariel", sans-serif;
 	position: absolute;
 	width: 100%;
+	height: 100%;
+	background: var(--color1) linear-gradient(135deg, var(--color2), var(--color3)) no-repeat fixed center;
 }
 
 button:not(:disabled) {
 	cursor: pointer;
+}
+
+#button-container {
+	position: absolute;
+	top: 30%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 3em;
+	color: var(--color4);
+}
+
+#headpat-button {
+	color: inherit;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: min(60vw, 300px);
+	height: min(60vw, 300px);
+	border: 0.2em solid currentColor;
+	background-color: var(--color1);
+	box-shadow: 0 5px 20px currentColor;
+}
+
+#status {
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	font-size: 0.7em;
+	margin-top: 1em;
+	transform: translateX(-50%);
+	opacity: 100%;
+	transition: opacity 0.5s ease;
+	font-weight: bold;
+}
+
+#status.hidden {
+	opacity: 0;
+}
+
+#hand {
+	position: absolute;
+	width: 150%;
+	bottom: 100%;
+	left: -50%;
+	opacity: 100%;
+	transition: opacity 0.5s ease;
+}
+
+#hand.hidden {
+	opacity: 0;
+}
+
+#hand:not(.hidden) {
+	animation: pat 0.5s ease-in alternate infinite;
+
+}
+
+@keyframes pat {
+	from {
+		transform: translateY(0);
+	}
+	to {
+		transform: translateY(80%);
+	}
 }
